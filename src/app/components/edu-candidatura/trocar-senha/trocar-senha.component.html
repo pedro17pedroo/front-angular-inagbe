@@ -1,0 +1,37 @@
+
+  <section class="counts section-bg">
+    <div class="container">
+ <div class="section-title">
+            <h2>TROCAR A PALAVRA-PASSE</h2>
+        </div> 
+    </div>
+</section><!-- End Counts Section -->
+
+
+<section id="contact" class="contact">
+   
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300"></div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="php-email-form">
+       
+            <div class="form-row col-lg-12 form-group text-left">
+              <mat-form-field class="col-lg-6">
+                <input matInput [(ngModel)]="user.password" type="password" placeholder="NOVA PALAVRA PASSE" [required]=true />
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="col-lg-6">
+                <input matInput [(ngModel)]="password2" type="password" placeholder="CONFIRMAR NOVA PALAVRA PASSE" [required]=true/>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="text-right">
+              <button (click)="trocarSenha()" class="btn btn-primary" type="submit">TROCAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

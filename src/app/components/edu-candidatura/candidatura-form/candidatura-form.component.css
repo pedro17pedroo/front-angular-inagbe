@@ -1,0 +1,12 @@
+.etapaPreenchida{
+  color: green;
+  border-radius: 90px;
+  border: 1px solid green;
+}
+.etapaPreenchidaText{
+  color: green;
+}
+
+.etapaNaoPreenchida{
+  color: gray;
+}

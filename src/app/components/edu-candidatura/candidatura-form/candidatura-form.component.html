@@ -1,0 +1,54 @@
+<section class="counts section-bg">
+  <div class="container">
+    <div class="row" style="margin-bottom: -50px; margin-top: -50px; color: #1c5c93;">
+      <div (click)="setEtapa(1)" style="cursor: pointer; " class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+        <div class="count-box">
+          <i [ngClass]="{'icofont-paper': etapa==1, 'icofont-check etapaPreenchida' : etapa>1}" class="bx-pull-left"
+            style="font-size: 2em; margin-top: -5px;"></i>
+          <p><strong [ngClass]="{'etapaPreenchidaText' : etapa>1, 'etapaNaoPreenchida' : null}" class="pull-right">
+              Dados Pessoais</strong></p>
+        </div>
+      </div>
+      <div (click)="setEtapa(2)" style="cursor: pointer; " class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+        <div class="count-box">
+          <i [ngClass]="{'etapaNaoPreenchida': etapa<2, 'icofont-check etapaPreenchida' : etapa>2, 'icofont-license' : etapa<=2}"
+            class="bx-pull-left" style="font-size: 2em; margin-top: -5px;"></i>
+          <p> <strong [ngClass]="{'etapaPreenchidaText' : etapa>2, 'etapaNaoPreenchida' : etapa<2}">Formação Concluída
+            </strong></p>
+        </div>
+      </div>
+      <div (click)="setEtapa(3)" style="cursor: pointer; " class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+        <div class="count-box">
+          <i [ngClass]="{'etapaNaoPreenchida': etapa<3, 'icofont-check etapaPreenchida' : etapa>3, 'icofont-attachment' : etapa<=3}"
+            class="bx-pull-left" style="font-size: 2em; margin-top: -5px;"></i>
+          <p> <strong [ngClass]="{'etapaPreenchidaText' : etapa>3, 'etapaNaoPreenchida' : etapa<3}">Anexos </strong></p>
+        </div>
+      </div>
+      <div (click)="setEtapa(4)" style="cursor: pointer; " class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+        <div class="count-box">
+          <i [ngClass]="{'etapaNaoPreenchida': etapa<4, 'icofont-check etapaPreenchida' : etapa>4, 'icofont-university' : etapa<=3}"
+            class="bx-pull-left" style="font-size: 2em; margin-top: -5px;"></i>
+          <p> <strong [ngClass]="{'etapaPreenchidaText' : etapa>4, 'etapaNaoPreenchida' : etapa<4}">Candidatura
+            </strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Counts Section -->
+
+<div class="col-sm-12" style="background: #fff; padding: 50px; zoom: 80% ;">
+  <app-form-pessoal [pessoa]="pessoa" *ngIf="etapa==1"></app-form-pessoal>
+  <app-form-formacao-anterior [pessoa]="pessoa" *ngIf="etapa==2"></app-form-formacao-anterior>
+  <app-form-anexo [pessoa]="pessoa" *ngIf="etapa==3"> </app-form-anexo>
+  <app-form-candidatura-interna [bolsa]="bolsa" [pessoa]="pessoa" *ngIf="etapa==4"> </app-form-candidatura-interna>
+  <hr />
+  <div class="row">
+    <div class="col-md-12">
+      <button *ngIf="etapa>1" (click)="setEtapa(etapa-1)" class="btn btn-lg btn-light">Voltar</button>
+      <button *ngIf="etapa<4" (click)="setEtapa(etapa+1)" class="btn btn-lg btn-primary bx-pull-right">Proximo 
+         </button>
+      <button *ngIf="etapa==4" (click)="candidaturaDetalhes()"  class="btn btn-lg btn-primary bx-pull-right">Concluir</button>
+    </div>
+  </div>
+</div><!-- end col md 12 -->

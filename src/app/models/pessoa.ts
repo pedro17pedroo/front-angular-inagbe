@@ -1,0 +1,36 @@
+import { HabilitacaoLiteraria } from './habilitacaoLiteraria';
+import { Contacto } from './contacto';
+import { Municipio } from './municipio';
+import { Candidatura } from './candidatura';
+import { Anexo_item } from './anexo_item';
+import { Anexo } from './anexo';
+import { User } from './user';
+export class Pessoa {
+    id: string;
+    nome: string;
+    user_id : string;
+    data_nascimento: string;
+    base_anexo_id: number;
+    estado_civil: number;
+    base_municipio_id: string;
+    municipio = new Municipio();
+    genero: number;
+    ndi: string;
+    provincia_documento_id: string;
+    dtEmissao: string;
+    tipo_identificacao: string;
+    municipio_residencia = new Municipio();
+    municipio_residencia_id: string;
+    endereco: string;
+    banco: string;
+    conta_bancaria: string;
+    telefone_principal: string;
+    telefone_alternativo: string;
+    iban: string;
+    contactos : Contacto[] = [];
+    formacoes : HabilitacaoLiteraria[] = [];
+    candidaturas : Candidatura[] = [];
+    anexos_itens : Anexo_item[] = [];
+    anexo  = new Anexo();  
+    user  = new User();  
+}

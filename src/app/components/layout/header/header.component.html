@@ -1,0 +1,55 @@
+<!-- ======= Top Bar ======= -->
+<section id="topbar" class="d-none d-lg-block"  style="background-image: url('/assets/img/bg_header.png');">
+  <div class="container clearfix">
+    <div *ngIf="user" class="contact-info float-left">
+      <i class="icofont-user" style="color:white"></i><a href="#" style="color:white">{{user.username}}</a>
+    </div>
+    <div class="social-links float-right">
+      <a href="https://twitter.com/inagbe_angola" target="_blank" class="twitter"><i class="icofont-twitter  " style="color:white"></i></a>
+      <a href="https://www.facebook.com/inagbe.angola" target="_blank" class="facebook"><i class="icofont-facebook  " style="color:white"></i></a>
+      <a href="https://www.instagram.com/inagbe" target="_blank" class="instagram"><i class="icofont-instagram " style="color:white"></i></a>
+      <a href="https://www.youtube.com/inagbe_angola" target="_blank" class="youtube  " style="color:white"><i
+          class="icofont-youtube"></i></a>
+
+      <!--  <a href="https://www.facebook.com/inagbe.angola" class="skype"><i class="icofont-skype"></i></a>
+      <a href="https://www.facebook.com/inagbe.angola" class="linkedin"><i class="icofont-linkedin"></i></a>
+   -->
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="container">
+
+    <div class="logo float-left">
+      <h1 class="text-light"><a href="http://inagbeangola.com"><span><strong>INAGBE </strong></span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      
+    </div>
+
+    <nav class="nav-menu float-right d-none d-lg-block">
+      <ul>
+        <li class="active"><a  routerLink="/home" style="cursor: pointer;" ><strong>Inicio </strong></a></li>
+        <li ><a  href="https://portal.inagbeangola.com"  style="cursor: pointer;" ><strong>Portal </strong></a></li>
+
+        <li><a routerLink="/bolsa" style="cursor: pointer;"> <strong>Bolsas </strong></a></li>
+  <!--      <li><a routerLink="/bolsa-resultado" style="cursor: pointer;"><strong>Resultados</strong></a></li> -->
+        <li *ngIf="!isLogged"><a routerLink="/criarconta" style="cursor: pointer;"><strong>Criar Conta</strong></a></li>
+        <li *ngIf="!isLogged"><a routerLink="/login" style="cursor: pointer;"><strong>Login</strong></a></li>
+
+        <li *ngIf="isLogged"><a routerLink="/candidatura-detalhes" style="cursor: pointer;"><strong> Minha Candidatura</strong></a></li>
+       
+        <li *ngIf="isLogged"><a routerLink="/perfil" style="cursor: pointer;"><strong> Conta</strong></a></li>
+
+        <li *ngIf="isLogged"><a style="cursor: pointer;" (click)="logout()"><strong>Sair</strong></a></li>
+
+
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </div>
+</header><!-- End Header -->

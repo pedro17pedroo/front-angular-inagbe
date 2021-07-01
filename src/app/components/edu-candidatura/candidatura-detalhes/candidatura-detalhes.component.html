@@ -1,0 +1,238 @@
+<section class="counts section-bg">
+    <div class="container">
+        <div class="section-title">
+            <h2> <strong> Candidato - {{pessoa.nome}} </strong></h2>
+        </div>
+    </div>
+</section><!-- End Counts Section -->
+
+
+
+<div class="col-sm-12" style="background: #fff; padding:0px 20px 0px 50px; zoom: 90% ;">
+
+    <div class="block "
+        style="background: #fff ;box-shadow: 0px 0px 0px #111; padding: 30px; width: 100%;; margin-left: 0px">
+        <div id="advanced-first" class="step">
+            <!-- Step Info -->
+            <div style="width: 100%;  border-bottom: 1px solid #ccc; margin: 20px 0px;  ">
+                <h5> <strong> Dados de Pessoais </strong> </h5>
+            </div>
+
+            <div class="row" id="mydiv_pessoa" style="margin-bottom:50px;">
+
+                <div class="col-md-4 form-group">
+                    <label for="personBiName">Nome </label><br> <strong>
+
+                        {{pessoa.nome}} </strong>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="provinceCode">Província </label><br> <strong>
+                        {{pessoa.municipio.provincia.nome}} </strong>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="townshipCode">Naturalidade </label><br> <strong>
+                        {{pessoa.municipio.nome}} </strong>
+                </div>
+
+
+                <div class="col-md-2 form-group">
+                    <label for="sel1">Data de Nascimento</label><br> <strong>
+
+                        {{pessoa.data_nascimento}} </strong>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="genderEnum">Sexo </label><br> <strong>
+                        {{getInfoGenero(pessoa.genero)}} </strong>
+
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="civilStatusCode">Estado civil </label><br> <strong>
+                        {{getInfoEstadosCivis(pessoa.estado_civil)}} </strong>
+
+
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="personBiNumber">Nº do BI </label><br> <strong>
+                        {{pessoa.ndi}} </strong>
+
+                </div>
+
+                <div class="col-md-2 form-group">
+                    <label for="sel1">Data de Emissão</label><br> <strong>
+                        {{pessoa.dtEmissao}} </strong>
+
+                </div>
+
+                <div class="col-md-2 form-group">
+                    <label for="sel1">Data de Expiração</label><br> <strong>
+
+
+
+                    </strong>
+                </div>
+
+                <div class="col-md-2 form-group">
+                    <label for="provinceCode"> Provincia de Residência</label><br> <strong>
+                        {{pessoa.municipio_residencia.provincia.nome}} </strong>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="townshipCode">Municipio de Residência </label><br> <strong>
+                        {{pessoa.municipio_residencia.nome}} </strong>
+                </div>
+
+                <div class="col-md-2 form-group">
+
+                    <label for="personBiAddress">Bairro Rua Casa </label><br> <strong>
+                        {{pessoa.endereco}} </strong>
+                </div>
+      
+                <div class="col-md-2 form-group">
+                    <label for="personBiNumber">Nome do Banco </label><br> <strong>
+                        {{pessoa.banco}} </strong>
+
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="personBiNumber">Nº da Conta Bancaria </label><br> <strong>
+                        {{pessoa.conta_bancaria}} </strong>
+
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="personBiNumber">IBAN </label><br> <strong>
+                        {{pessoa.iban}} </strong>
+
+                </div>
+
+
+
+                <div class="col-md-2 form-group" *ngFor="let value of pessoa.contactos"> <label for="personBiAddress">
+                        {{getInfoTipoContacto(value.tipo_contacto)}} </label><br> <strong>
+                        {{value.contacto}} </strong>
+
+                </div>
+
+
+
+
+            </div>
+
+            <div style="width: 100%;  border-bottom: 1px solid #ccc; margin: 10px 0px;  ">
+                <h5> <strong> Dados de Conclusão da formação </strong> </h5>
+
+            </div>
+
+            <div class="block full" class="cargos">
+
+
+                <table id="example-datatable" class="table table-vcenter table-striped table-condensed table-bordered">
+
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Instituição</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Ingresso</th>
+                            <th scope="col">Conclusão</th>
+                            <th scope="col">Nivel Académico</th>
+                            <th scope="col">Média</th>
+                            <th scope="col">criado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let value of pessoa.formacoes">
+                            <td> {{value.instituicao.nome}} </td>
+                            <td> {{value.curso.nome}} </td>
+                            <td> {{value.ano_ingresso}} </td>
+                            <td> {{value.ano_conclusao}} </td>
+                            <td> {{value.nivel_academico}} </td>
+                            <td> {{value.media}} </td>
+                            <td> {{value.created_at}} </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+
+            <div style="width: 100%;  border-bottom: 1px solid #ccc; margin: 30px 0px; ">
+                <h5> <strong> Dados da Candidatura</strong> </h5>
+
+            </div>
+
+
+            <div class="block full" class="cargos">
+
+
+                <table id="example-datatable" class="table table-vcenter table-striped table-condensed table-bordered">
+
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Bolsa</th>
+                            <th scope="col">Curso </th>
+                            <th scope="col">Instituição </th>
+
+                            <th scope="col">criado</th>
+                            <th scope="col">Acção</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let value of pessoa.candidaturas">
+                            <td> {{value.bolsa.nome}} </td>
+                            <td> {{ getInfoCurso(value) }} </td>
+                            <td> {{ getInfoInstituicao(value) }} </td>
+
+
+                            <td> {{value.created_at}} </td>
+                            <td>
+                      
+                                <a *ngIf="value.bolsa.estado==1" routerLink="/candidatura-form/{{value.bolsa.id}}"  class="iconbutton" color="primary"     > <i class="icofont-pencil"></i></a>
+                  
+                                <button mat-icon-button matTooltip="Imprimir Ficha" (click)="imprimirFicha(value)"
+                                    class="iconbutton" color="primary"><i class="icofont-printer"></i></button></td>
+
+
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+
+            <div style="width: 100%;  border-bottom: 1px solid #ccc; margin: 30px 0px; ">
+                <h5> <strong> Anexos Carregados </strong> </h5>
+
+            </div>
+
+
+            <div class="block full" class="cargos">
+
+
+                <table id="example-datatable" class="table table-vcenter table-striped table-condensed table-bordered">
+
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Descrição </th>
+                            <th scope="col">Nome do Ficheiro </th>
+                            <th scope="col">Estado </th>
+                            <th scope="col">Acção </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="tem_anexo==true">
+                        <tr *ngFor="let anexo of pessoa.anexo.itens">
+                            <td> {{anexo.tipo_anexo.nome}} </td>
+                            <td> {{anexo.nome}} </td>
+
+                            <td> <span class="icofont-check"> </span> </td>
+                            <td> <button mat-icon-button matTooltip="Imprimir Ficha" (click)="verAnexo(anexo)"
+                                class="iconbutton" color="primary"><i class="icofont-printer"></i></button></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

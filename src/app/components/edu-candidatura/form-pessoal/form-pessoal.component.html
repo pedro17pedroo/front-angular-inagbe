@@ -1,0 +1,123 @@
+ 
+
+<div class="form-row">
+  <mat-form-field class="col-lg-6">
+    <input matInput [required]=true [(ngModel)]="pessoa.nome" type="text" placeholder="Nome Completo" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <mat-label>Género</mat-label>
+    <mat-select [required]=true [(ngModel)]="pessoa.genero">
+      <mat-option *ngFor="let genero of generos" [value]="genero.code">
+        {{genero.info}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <mat-label>Estado Civil</mat-label>
+    <mat-select [required]=true [(ngModel)]="pessoa.estado_civil">
+      <mat-option *ngFor="let estadoCivil of estadosCivis" [value]="estadoCivil.code">
+        {{estadoCivil.info}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="form-row">
+  <mat-form-field class="col-lg-2">
+    <input matInput [required]=true [(ngModel)]="pessoa.ndi" type="text" placeholder="N.º do Bilhete de Identidade" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-2">
+    <input matInput [max]="dataEmissaoMax" [matDatepicker]="dataEmissao" [(ngModel)]="pessoa.dtEmissao" placeholder="Data de Emissão">
+    <mat-datepicker-toggle matSuffix [for]="dataEmissao"></mat-datepicker-toggle>
+    <mat-datepicker #dataEmissao></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="col-lg-2">
+    <input matInput [max]="dataNascimentoMax" [matDatepicker]="dataNascimento" [(ngModel)]="pessoa.data_nascimento" placeholder="Data de Nascimento">
+    <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+    <mat-datepicker #dataNascimento></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <mat-label>Província</mat-label>
+    <mat-select (selectionChange)="changeProvincia()" [required]=true [(ngModel)]="pessoa.municipio.provincia.id">
+      <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+        {{provincia.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <mat-label>Naturalidade</mat-label>
+    <mat-select [disabled]="!pessoa.municipio.provincia.id" [required]=true [(ngModel)]="pessoa.base_municipio_id">
+      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">
+        {{municipio.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="form-row">
+  <!-- <div class="col-lg-2">
+    <ng-select
+    placeholder="País de Residência"
+    [(ngModel)]="pessoa.municipio_residencia.provincia.base_pais_id"
+    [items]="paises"
+    bindLabel="nome"
+    bindValue="id"
+    (onChange)="changePaisResidencia()"
+    name="pais"
+  >
+  </ng-select>
+  </div> -->
+  <mat-form-field class="col-lg-2">
+    <mat-label>País de Residência</mat-label>
+    <mat-select (selectionChange)="changePaisResidencia()" [required]=true [(ngModel)]="pessoa.municipio_residencia.provincia.base_pais_id">
+      <mat-option *ngFor="let pais of paises" [value]="pais.id">
+        {{pais.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-md-2">
+    <mat-label>Província de Residência</mat-label>
+    <mat-select  [disabled]="!pessoa.municipio_residencia.provincia.base_pais_id" (selectionChange)="changeProvinciaResidencia()" [required]=true [(ngModel)]="pessoa.municipio_residencia.provincia.id">
+      <mat-option *ngFor="let provincia of provinciasResidencia" [value]="provincia.id">
+        {{provincia.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-2">
+    <mat-label>Município de Residência</mat-label>
+    <mat-select [disabled]="!pessoa.municipio_residencia.provincia.id"  [required]=true [(ngModel)]="pessoa.municipio_residencia_id">
+      <mat-option *ngFor="let municipio of municipiosResidencia" [value]="municipio.id">
+        {{municipio.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-6 form-group text-left">
+    <input matInput [(ngModel)]="pessoa.endereco" type="text" placeholder="Endereço *" />
+  </mat-form-field>
+</div>
+<div class="form-row">
+  <mat-form-field class="col-lg-4">
+    <input matInput [required]=true [(ngModel)]="pessoa.telefone_principal" type="text" placeholder="Telefone Principal" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-4">
+    <input matInput [required]=true [(ngModel)]="pessoa.telefone_alternativo" type="text" placeholder="Telefone Alternativo" />
+  </mat-form-field>
+  
+</div>
+<div class="form-row">
+  <mat-form-field class="col-lg-4">
+    <input matInput [required]=true [(ngModel)]="pessoa.banco" type="text" placeholder="Nome do Banco" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-4">
+    <input matInput [required]=true [(ngModel)]="pessoa.conta_bancaria" type="text" placeholder="Conta Bancaria" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-4">
+    <input matInput [required]=true [(ngModel)]="pessoa.iban" type="text" placeholder="IBAN" />
+  </mat-form-field>
+  
+</div> 
+<hr/>
+<!--
+<app-pessoa-contactos-list [pessoa]="pessoa"></app-pessoa-contactos-list>
+
+-->

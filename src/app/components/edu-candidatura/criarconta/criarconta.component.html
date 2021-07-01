@@ -1,0 +1,44 @@
+<section id="contact" class="contact">
+  <div class="section-title">
+    <h1>ABERTURA DE CONTA</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300"></div>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="php-email-form">
+
+          <mat-form-field class="form-row col-lg-12 form-group text-left">
+            <input matInput [(ngModel)]="user.email" type="email" placeholder="INSERIR SUA CONTA DE E-MAIL" required
+              #user.emailControl="ngModel">
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="email.invalid || email.touched">Deve preencher a sua conta de e-mail</mat-error>
+          </mat-form-field>
+
+          <div class="form-row col-lg-12 form-group text-left">
+            <mat-form-field class="col-lg-6">
+              <input matInput [(ngModel)]="user.password" type="password" placeholder="DIGITAR PALAVRA-PASSE" required
+                minlength="3" />
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-hint></mat-hint>
+              <mat-error *ngIf="password.invalid || email.touched">Deve preencher a sua palavra-passe</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-lg-6">
+              <input matInput [(ngModel)]="password2" type="password" placeholder="CONFIRMAR PALAVRA-PASSE" required
+                minlength="3" #password2Control="ngModel" />
+              <mat-icon matSuffix>lock</mat-icon>
+              <mat-error *ngIf="password.invalid || email.touched">Deve confrmar a sua palavra-passe</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="text-right">
+            <button (click)="registar()" class="btn btn-primary" type="submit"> CRIAR CONTA</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

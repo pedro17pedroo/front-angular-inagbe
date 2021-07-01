@@ -1,0 +1,97 @@
+<div class="form-row">
+  <mat-form-field class="col-lg-4">
+    <mat-label>País</mat-label>
+    <mat-select (selectionChange)="changePais()" [required]=true [(ngModel)]="pais_id">
+      <mat-option *ngFor="let pais of paises" [value]="pais.id">
+        {{pais.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-4">
+    <mat-label>Província</mat-label>
+    <mat-select (selectionChange)="changeProvincia()" [disabled]="!pais_id" [required]=true [(ngModel)]="provincia_id">
+      <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">
+        {{provincia.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-4">
+    <mat-label>Nível Académico</mat-label>
+    <mat-select (selectionChange)="changeNivelAcademico()" [disabled]="!provincia_id" [required]=true [(ngModel)]="formacao.nivel_academico">
+      <mat-option *ngFor="let nivelAcademico of niveisAcademicos" [value]="nivelAcademico.code">
+        {{nivelAcademico.info}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="form-row">
+  <mat-form-field class="col-lg-4">
+    <mat-label>Instituição</mat-label>
+    <mat-select [disabled]="formacao.nivel_academico == undefined" [required]=true [(ngModel)]="formacao.edu_instituicao_id">
+      <mat-option *ngFor="let instituicao of instituicoes" [value]="instituicao.id">
+        {{instituicao.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <mat-label>Curso</mat-label>
+    <mat-select [required]=true [(ngModel)]="formacao.base_curso_id">
+      <mat-option *ngFor="let curso of cursosgerais" [value]="curso.id">
+        {{curso.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-1">
+    <input matInput [required]=true [(ngModel)]="formacao.media" placeholder="Média" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-2">
+    <input matInput [required]=true [(ngModel)]="formacao.ano_ingresso" placeholder="Ano de Ingresso" />
+  </mat-form-field>
+  <mat-form-field class="col-lg-2">
+    <input matInput [required]=true [(ngModel)]="formacao.ano_conclusao" placeholder="Ano de Conclusão" />
+  </mat-form-field>
+</div>
+<div class="form-row">
+  <div *ngFor="let tipo_anexo of tipos_anexos" class="col-lg-4 form-group">
+    <label for="">{{tipo_anexo.nome}} <span *ngIf="tipo_anexo.obrigatorio==true"> *</span></label>
+    <div class="input-group">
+      <div class="custom-file">
+          <input required="required" (change)="fileChange($event, tipo_anexo.id)" type="file" name="files_{{tipo_anexo.nome}}[]" class="custom-file-input">
+          <label class="custom-file-label" for="inputGroupFile01">{{tipo_anexo.nome}}</label>
+      </div>
+  </div>
+  </div>
+  <button (click)="adicionarFormacao()" style=" padding: 15px 0px;" class=" btn btn-success col-lg-2 ml-4  ">Salvar Formação</button>
+
+</div>
+<hr/>
+<table mat-table [dataSource]="dataSource" matSort >
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Curso</th>
+    <td mat-cell *matCellDef="let element">{{ getInfoCurso(element.base_curso_id) }}</td>
+  </ng-container>
+  <ng-container matColumnDef="nivel_academico">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nível Académico</th>
+    <td mat-cell *matCellDef="let element">{{ getInfoNivelAcademico(element.nivel_academico) }}</td>
+  </ng-container>
+  <ng-container matColumnDef="ano_ingresso">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ano de Ingresso</th>
+    <td mat-cell *matCellDef="let element">{{ element.ano_ingresso }}</td>
+  </ng-container>
+  <ng-container matColumnDef="ano_conclusao">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ano de Conclusão</th>
+    <td mat-cell *matCellDef="let element">{{ element.ano_conclusao }}</td>
+  </ng-container>
+  <ng-container matColumnDef="accao">
+    <th mat-header-cell *matHeaderCellDef>Acções</th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button matTooltip="Editar" (click)="editarFormacao(row)" class="iconbutton"
+      color="primary"><i class="icofont-pencil"></i></button>
+      <button mat-icon-button matTooltip="Eliminar" (click)="removerFormacao(row)" class="red-icon iconbutton"
+      color="primary"><i class="icofont-trash"></i></button>
+    </td>
+  </ng-container>
+  <tr mat-header-row class="backgroundTable" *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

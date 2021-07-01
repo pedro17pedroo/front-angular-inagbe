@@ -1,0 +1,38 @@
+
+  <section class="counts section-bg">
+    <div class="container">
+ <div class="section-title">
+            <h2>RECUPERAR A PALAVRA-PASSE</h2>
+            <h5></h5>
+        </div> 
+    </div>
+</section><!-- End Counts Section -->
+
+
+<section id="contact" class="contact">
+   
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" data-aos="fade-up" data-aos-delay="300"></div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="php-email-form">
+       
+            <div class="form-row col-lg-12 form-group text-left">
+
+              <mat-form-field class="col-lg-12">
+                <input matInput [(ngModel)]="user.email" type="text" placeholder="INSERIR SUA CONTA DE E-MAIL" #user.emailControl="ngModel" required/>
+                <mat-icon matSuffix>mail</mat-icon>
+              </mat-form-field>
+            </div>
+              <div class="form-row col-lg-12 form-group text-left">
+ 
+            </div>
+            <div class="text-right">
+              <button (click)="receberemail()" class="btn btn-primary" type="submit">RECUPERAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

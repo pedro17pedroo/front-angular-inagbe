@@ -1,0 +1,63 @@
+<main id="main">
+
+  <section class="counts section-bg">
+    <div class="container">
+ <div class="section-title">
+            <h2>Minha Conta  </h2>
+        </div> 
+    </div>
+</section><!-- End Counts Section -->
+
+  <!-- ======= Contact Us Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+ 
+      <div class="row">
+
+        <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up">
+          <div class="info-box">
+            <i class="bx bx-map"></i>
+
+            <h5><strong>Nome</strong> </h5>
+            <p>{{pessoa.nome}}</p>
+            <h5><strong>Email</strong> </h5>
+            <p>{{user}}<br></p>
+          </div>
+
+        </div>
+
+
+        <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="info-box ">
+            <i class="bx bx-phone-call"></i>
+            <h5><strong>Contactos</strong> </h5>
+            <p>{{pessoa.telefone_principal}}<br>{{pessoa.telefone_alternativo}}</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="info-box">
+            <i class="bx bx-envelope"></i>
+
+            <h5><strong>Notificações</strong> </h5>
+ 
+
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+
+          <h5><strong>Mudar Palavra Passe</strong> </h5>
+
+
+          <div class="text-left"><button (click)="trocarSenha()" class="btn btn-outline-primary col-lg-6">Trocar de Senha</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Us Section -->
+
+</main><!-- End #main -->

@@ -1,0 +1,34 @@
+ 
+  <main id="main">
+    <!-- ======= Counts Section ======= -->
+    <section class="counts section-bg">
+      <div class="container">
+  
+          <div class="section-title">
+              <h2>Resultados</h2>
+            </div>
+     
+      </div>
+    </section><!-- End Counts Section -->
+      <!-- ======= About Lists Section ======= -->
+      <section class="about-lists">
+        <div class="container">
+  
+          <div class="row no-gutters">
+  
+            <div  (click)="detalharResultado(resultado.id)" *ngFor="let resultado of bolsaresultados" class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+              <h4><a style="cursor: pointer;"    (click)="detalharResultado(resultado.id)"><strong>{{resultado.nome}}</strong> </a></h4>
+              
+              <p>{{resultado.descricao}}</p>
+              <p><a style="cursor: pointer;" href="{{resultado.anexo}}"> Clique aqui para ver a lista</a></p>
+            </div>
+     
+          </div>
+  
+        </div>
+      </section><!-- End About Lists Section -->
+  
+      
+   
+    </main><!-- End #main -->
+   

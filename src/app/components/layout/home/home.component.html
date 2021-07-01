@@ -1,0 +1,134 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero" style="height: 450px;">
+  <div class="hero-container">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-top: -100px;">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('assets/img/slide/slide-1.jpg');">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animated fadeInDown">PORTAL DE CANDIDATURAS <span> </span></h2>
+              <p class="animated fadeInUp">O Instituto Nacional de Gestão de Bolsas de Estudo fornece bolsas internas e
+                externas para licenciatura, mestrado e
+                doutoramento, tendo todas requisitos diferentes. Nem todas as bolsas estarão disponíveis ao mesmo tempo,
+                portanto confirme sempre visitando a página inicial. </p>
+              <a routerLink="/bolsa" class="btn-get-started animated fadeInUp scrollto">CANDIDATAR-ME</a>
+              <a routerLink="/login" class="btn-get-started animated fadeInUp scrollto">Login</a>
+
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('assets/img/slide/slide-2.jpg');">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animated fadeInDown"> <span> COMO CANDIDATAR-ME ?</span></h2>
+              <p class="animated fadeInUp">O INAGBE fornece bolsas internas e externas para licenciatura, mestrado e
+                doutoramento, tendo todas requisitos diferentes. Nem todas as bolsas estarão disponíveis ao mesmo tempo,
+                portanto confirme sempre visitando a página inicial. </p>
+              <a routerLink="/candidatura-form/6" class="btn-get-started animated fadeInUp scrollto">CANDIDATAR-ME</a>
+              <a routerLink="/login" class="btn-get-started animated fadeInUp scrollto">Login</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+  <!-- ======= Counts Section ======= -->
+  <section class="counts section-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+          <div class="count-box">
+            <!--    <i class="icofont-simple-smile" style="color: #20b38e;"></i> -->
+            <span data-toggle="counter-up">0</span>
+            <p>Bolsas Interna de <br> Graduação</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="count-box">
+            <!--    <i class="icofont-simple-smile" style="color: #c042ff;"></i> -->
+            <span data-toggle="counter-up">0</span>
+            <p>Bolsas Internas Pós-Graduação</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+          <div class="count-box">
+            <!--  <i class="icofont-simple-smile" style="color: #46d1ff;"></i> -->
+            <span data-toggle="counter-up">9</span>
+            <p>Bolsas Externas de Graduação </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
+          <div class="count-box">
+            <!--    <i class="icofont-users-alt-5" style="color: #ffb459;"></i> -->
+            <span data-toggle="counter-up">300</span>
+            <p>Bolsas Externas de Pos-graduação</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Counts Section -->
+
+  <!-- ======= Services Section ======= -->
+  <section id="services" class="services">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Bolsas </h2>
+      </div>
+      <div class="row">
+        <div style="cursor: pointer;" (click)="detalhar(bolsa.id)" *ngFor="let bolsa of bolsas"
+          class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+          <div class="icon"><i class="icofont-computer"></i></div>
+          <h4 class="title"><a (click)="detalhar(bolsa.id)">{{bolsa.nome}}</a></h4>
+          <p class="description">{{bolsa.nome}}</p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Services Section -->
+  <!-- ======= Counts Section ======= -->
+  <section class="counts section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Resultados</h2>
+      </div>
+    </div>
+  </section><!-- End Counts Section -->
+  <!-- ======= About Lists Section ======= -->
+  <section class="about-lists">
+    <div class="container">
+      <div class="row no-gutters">
+        <div (click)="detalharResultado(resultado.id)" *ngFor="let resultado of bolsaresultados"
+          class="col-lg-4 col-md-6 content-item" data-aos="fade-up">
+          <h4><a style="cursor: pointer;" (click)="detalharResultado(resultado.id)"><strong>{{resultado.nome}}</strong>
+            </a></h4>
+
+          <p>{{resultado.descricao}}</p>
+          <p><a style="cursor: pointer;" href="{{resultado.anexo}}"> Clique aqui para ver a lista</a></p>
+        </div>
+      </div>
+    </div>
+  </section><!-- End About Lists Section -->
+</main><!-- End #main -->

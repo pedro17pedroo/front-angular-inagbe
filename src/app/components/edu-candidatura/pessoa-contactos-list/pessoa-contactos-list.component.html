@@ -1,0 +1,36 @@
+<div class="form-row">
+  <mat-form-field class="col-lg-3">
+    <mat-label>Tipo de Contacto</mat-label>
+    <mat-select [required]=true [(ngModel)]="contacto.tipo_contacto">
+      <mat-option *ngFor="let tipoContacto of tiposContactos" [value]="tipoContacto.code">
+        {{tipoContacto.info}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="col-lg-3">
+    <input matInput [(ngModel)]="contacto.contacto" type="text" placeholder="Contacto *" />
+  </mat-form-field>
+  <button [disabled]="(!contacto.tipo_contacto && contacto.tipo_contacto != 0 ) || !contacto.contacto" (click)="adicionarContacto()" class="btn btn-outline-primary col-lg-2 ml-4">Salvar Contacto</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="tipo_contacto">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Contacto</th>
+    <td mat-cell *matCellDef="let element">{{ getInfoTipoContacto(element.tipo_contacto) }}</td>
+  </ng-container>
+  <ng-container matColumnDef="contacto">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Contacto</th>
+    <td mat-cell *matCellDef="let element">{{ element.contacto }}</td>
+  </ng-container>
+  <ng-container matColumnDef="accao">
+    <th mat-header-cell *matHeaderCellDef>Acções</th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button matTooltip="Editar" (click)="editarContacto(row)" class="iconbutton"
+      color="primary"><i class="icofont-pencil"></i></button>
+      <button mat-icon-button matTooltip="Eliminar" (click)="removerContacto(row)" class="red-icon iconbutton"
+      color="primary"><i class="icofont-trash"></i></button>
+    </td>
+  </ng-container>
+  <tr mat-header-row class="backgroundTable" *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
